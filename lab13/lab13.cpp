@@ -3,7 +3,7 @@
 int *KnapsackDP( int *w, int *v, int n, int wx ) ;
 
 int main() {
- 	int n = 5 , wx = 11 ;
+	int n = 5 , wx = 11 ;
  	int w[ 5 ] = { 1, 2, 5, 6, 7 } ;
  	int v[ 5 ] = { 1, 6, 18, 22, 28 } ;
  	int *x ;
@@ -20,15 +20,15 @@ int *KnapsackDP(int *w, int *v, int n, int wx) {
 	  	}//end for  
   	}//end for
   	for(int i = 1; i <= n; i++){
-    	for(int j = 0; j <= wx; j++){
-      		B[i][j] = B[i - 1][j] ;
-      		if (j >= w[i - 1]){
-        		int val = B[i - 1][j - w[i - 1]] + v[i - 1] ;
-        		if (val > B[i][j]) {
-          			B[i][j] = val ;
-        		}//end if
-      		}//end if
-    	}//end for
+    		for(int j = 0; j <= wx; j++){
+      			B[i][j] = B[i - 1][j] ;
+      			if (j >= w[i - 1]){
+        			int val = B[i - 1][j - w[i - 1]] + v[i - 1] ;
+        			if (val > B[i][j]) {
+          				B[i][j] = val ;
+        			}//end if
+      			}//end if
+    		}//end for
   	}//end for
   	int *x = new int(n);
   	for (int i = 0 ; i < n ; i++ ){
@@ -36,10 +36,10 @@ int *KnapsackDP(int *w, int *v, int n, int wx) {
   	}//end for
   	int j = wx;
   	for (int i = n; i >= 1; i--){
-    	if (B[i][j] != B[i - 1][j]){
-      		x[i - 1] = 1;
-      		j -= w[i - 1];
-    	}//end if
+    		if (B[i][j] != B[i - 1][j]){
+      			x[i - 1] = 1;
+      			j -= w[i - 1];
+    		}//end if
   	}//end for
   	return x;
 }//end function KnapsackDP
